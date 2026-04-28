@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrinod - Developer, Writer & Creator</title>
+    <title>Thrinod K R - Full Stack Developer & Tech Enthusiast</title>
+    <meta name="description" content="Full Stack Developer passionate about building innovative web solutions and sharing knowledge about technology.">
     <style>
         * {
             margin: 0;
@@ -70,7 +71,7 @@
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             animation: fadeInDown 0.8s ease;
         }
@@ -88,14 +89,22 @@
         
         .hero h1 {
             font-size: 3.5em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: 700;
         }
         
-        .hero p {
-            font-size: 1.3em;
-            margin-bottom: 30px;
+        .hero .tagline {
+            font-size: 1.4em;
+            margin-bottom: 15px;
             opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .hero p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.8;
         }
         
         .cta-buttons {
@@ -161,13 +170,47 @@
             margin-bottom: 30px;
             text-align: center;
             color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
         }
         
         .about-text {
             font-size: 1.1em;
             color: #666;
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .highlight-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .highlight-item strong {
+            color: #667eea;
+            font-size: 1.2em;
         }
         
         /* Skills Section */
@@ -182,6 +225,7 @@
             gap: 30px;
             max-width: 900px;
             margin: 0 auto;
+            margin-top: 40px;
         }
         
         .skill-card {
@@ -205,12 +249,29 @@
         
         .skill-card h3 {
             font-size: 1.3em;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #667eea;
         }
         
         .skill-card p {
             color: #666;
+            font-size: 0.95em;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
         }
         
         /* Featured Posts */
@@ -307,14 +368,23 @@
         }
         
         .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.3s;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
         
         .contact-links a:hover {
-            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: white;
+            transform: translateY(-2px);
         }
         
         /* Footer */
@@ -351,8 +421,12 @@
                 font-size: 2.2em;
             }
             
-            .hero p {
+            .hero .tagline {
                 font-size: 1.1em;
+            }
+            
+            .hero p {
+                font-size: 0.95em;
             }
             
             .section-title {
@@ -373,7 +447,7 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <a href="/" class="logo">Thrinod</a>
+            <a href="/" class="logo">Thrinod K R</a>
             <nav>
                 <a href="/">Home</a>
                 <a href="#about">About</a>
@@ -386,11 +460,12 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to My Space 👋</h1>
-            <p>I'm Thrinod - A passionate developer, writer, and creator sharing knowledge about web development, coding, and technology.</p>
+            <h1>Thrinod K R 👋</h1>
+            <p class="tagline">Full Stack Developer | Tech Enthusiast | Content Creator</p>
+            <p>Passionate about building innovative web solutions, sharing knowledge through writing, and contributing to the developer community.</p>
             <div class="cta-buttons">
-                <a href="/blog.html" class="btn btn-primary">Read My Blog</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="/blog.html" class="btn btn-primary">Read My Articles</a>
+                <a href="#contact" class="btn btn-secondary">Connect With Me</a>
             </div>
         </div>
     </section>
@@ -400,43 +475,80 @@
         <div class="about-content">
             <h2 class="section-title">About Me</h2>
             <p class="about-text">
-                I'm a full-stack developer with a passion for creating beautiful, functional web applications. 
-                With over 5 years of experience in web development, I specialize in building responsive, 
-                user-friendly websites and applications that solve real-world problems.
+                I'm a full-stack developer with a passion for creating beautiful, functional web applications that solve real-world problems. 
+                With extensive experience in modern web technologies, I specialize in building responsive, user-friendly websites and applications 
+                that deliver exceptional user experiences.
             </p>
             <p class="about-text">
-                Beyond coding, I love sharing what I've learned with others. Through this blog, I write detailed 
-                tutorials, best practices, and insights on web development to help the community grow and learn together. 
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                or enjoying the great outdoors.
+                Beyond coding, I'm committed to sharing knowledge with the developer community. Through this blog, I write comprehensive tutorials, 
+                best practices, and insights on web development, programming, and technology trends. I believe in the power of continuous learning 
+                and love mentoring fellow developers on their journey.
             </p>
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <strong>5+ Years</strong>
+                    <p>Web Development Experience</p>
+                </div>
+                <div class="highlight-item">
+                    <strong>Full Stack</strong>
+                    <p>Frontend & Backend Development</p>
+                </div>
+                <div class="highlight-item">
+                    <strong>Community</strong>
+                    <p>Active Open Source Contributor</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section class="skills">
         <div class="container">
-            <h2 class="section-title">My Skills</h2>
+            <h2 class="section-title">My Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS, JavaScript, React, Vue, and modern web frameworks for building interactive applications.</p>
+                    <h3>Frontend Development</h3>
+                    <p>Building responsive, interactive web interfaces with modern frameworks and best practices.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🗄️</div>
+                    <div class="skill-icon">⚙️</div>
                     <h3>Backend Development</h3>
-                    <p>Node.js, Python, databases, APIs, and server-side architecture for scalable applications.</p>
+                    <p>Creating scalable server-side solutions with databases, APIs, and modern architectures.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Databases</span>
+                        <span class="skill-tag">APIs</span>
+                    </div>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🎨</div>
                     <h3>UI/UX Design</h3>
-                    <p>Responsive design, user experience optimization, and creating beautiful interfaces.</p>
+                    <p>Creating beautiful, intuitive user interfaces with focus on user experience and accessibility.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Design</span>
+                        <span class="skill-tag">UX</span>
+                        <span class="skill-tag">Responsive</span>
+                        <span class="skill-tag">Accessibility</span>
+                    </div>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🚀</div>
                     <h3>DevOps & Deployment</h3>
-                    <p>GitHub Actions, CI/CD pipelines, cloud deployment, and server management.</p>
+                    <p>Managing CI/CD pipelines, cloud deployment, and infrastructure for reliable applications.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Cloud</span>
+                        <span class="skill-tag">Deployment</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -445,7 +557,7 @@
     <!-- Featured Posts -->
     <section class="featured-posts">
         <div class="container">
-            <h2 class="section-title">Featured Articles</h2>
+            <h2 class="section-title">Latest Articles</h2>
             <div class="posts-grid">
                 <a href="/articles/getting-started-with-github-pages.html" class="post-card">
                     <div class="post-header">🚀</div>
@@ -481,20 +593,20 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <h2>Let's Connect! 🤝</h2>
-        <p>I'm always open to new opportunities, collaborations, and interesting conversations.</p>
+        <p>I'm always open to new opportunities, collaborations, and interesting conversations about technology and development.</p>
         <div class="contact-links">
-            <a href="mailto:hello@thrinod.com">📧 Email</a>
-            <a href="https://github.com/thrinod" target="_blank">🐙 GitHub</a>
-            <a href="https://twitter.com" target="_blank">𝕏 Twitter</a>
-            <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+            <a href="mailto:thrinod.kr@gmail.com" title="Send me an email">📧 Email</a>
+            <a href="https://github.com/thrinod" target="_blank" title="Visit my GitHub">🐙 GitHub</a>
+            <a href="https://www.linkedin.com/in/thrinod-k-r-23368851" target="_blank" title="Connect on LinkedIn">💼 LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" title="Follow on Twitter">𝕏 Twitter</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Thrinod. All rights reserved.</p>
+        <p>&copy; 2026 Thrinod K R. All rights reserved.</p>
         <p style="margin-top: 15px;">
-            Built with ❤️ and GitHub Pages | <a href="/blog.html">Blog</a> | <a href="https://github.com/thrinod">GitHub</a>
+            Built with ❤️ and GitHub Pages | <a href="/blog.html">Blog</a> | <a href="https://www.linkedin.com/in/thrinod-k-r-23368851">LinkedIn</a> | <a href="https://github.com/thrinod">GitHub</a>
         </p>
     </footer>
 </body>
