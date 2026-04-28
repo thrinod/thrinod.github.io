@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with n8n - Thrinod</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .article-header {
+            margin-bottom: 40px;
+        }
+        
+        .article-title {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .article-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+        
+        .article-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .article-content h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin: 30px 0 15px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.4em;
+            color: #667eea;
+            margin: 25px 0 10px 0;
+        }
+        
+        .article-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .article-content ul,
+        .article-content ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        
+        .article-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        
+        .article-content pre {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .article-content pre code {
+            background: none;
+            color: #fff;
+            padding: 0;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .note strong {
+            color: #856404;
+        }
+        
+        .tip {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tip strong {
+            color: #0c5460;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .article-title {
+                font-size: 1.8em;
+            }
+            
+            .article-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">Thrinod</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="mailto:krthrinod@gmail.com">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Article -->
+    <div class="article-container">
+        <article>
+            <div class="article-header">
+                <h1 class="article-title">Getting Started with n8n: Workflow Automation Made Easy</h1>
+                <div class="article-meta">
+                    <span>📅 April 28, 2026</span>
+                    <span>⏱️ 12 min read</span>
+                    <span>👤 Thrinod</span>
+                </div>
+                <div class="article-tags">
+                    <span class="tag">n8n</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Workflow</span>
+                    <span class="tag">Integration</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>What is n8n?</h2>
+                <p>
+                    n8n is a powerful, open-source workflow automation platform that allows you to create complex automations 
+                    and integrate multiple applications without writing code. Whether you're automating repetitive tasks, 
+                    integrating APIs, or building sophisticated workflows, n8n provides an intuitive visual interface 
+                    that makes automation accessible to everyone.
+                </p>
+                <p>
+                    Think of n8n as your personal automation assistant that can connect hundreds of applications and services 
+                    together, creating workflows that run automatically based on triggers and conditions you define.
+                </p>
+
+                <h2>Why Use n8n?</h2>
+                <p>There are several compelling reasons to use n8n for your automation needs:</p>
+                <ul>
+                    <li><strong>No-Code Interface:</strong> Build complex workflows using a visual interface without coding knowledge</li>
+                    <li><strong>500+ Integrations:</strong> Connect with popular services like Slack, Google Workspace, Salesforce, and more</li>
+                    <li><strong>Open Source:</strong> Self-hosted option available for privacy and control</li>
+                    <li><strong>Flexible:</strong> Create simple automations or complex multi-step workflows</li>
+                    <li><strong>Cost-Effective:</strong> Save on expensive automation tools with n8n's affordable pricing</li>
+                    <li><strong>Scheduling:</strong> Run workflows on a schedule or trigger them manually</li>
+                </ul>
+
+                <h2>Key Concepts</h2>
+                <p>Before diving into building workflows, let's understand the key components:</p>
+
+                <h3>Workflows</h3>
+                <p>
+                    A workflow is the core unit in n8n. It's a series of connected nodes that perform actions when triggered. 
+                    Each workflow has a starting point (trigger) and can have multiple paths and branches.
+                </p>
+
+                <h3>Nodes</h3>
+                <p>
+                    Nodes are individual actions or integrations within your workflow. Examples include:
+                </p>
+                <ul>
+                    <li><strong>Trigger Nodes:</strong> Start your workflow (e.g., Webhook, Schedule, Manual trigger)</li>
+                    <li><strong>Action Nodes:</strong> Perform actions in external services (e.g., Send Email, Create Slack Message)</li>
+                    <li><strong>Logic Nodes:</strong> Add conditional logic and branching</li>
+                    <li><strong>Data Nodes:</strong> Transform and manipulate data</li>
+                </ul>
+
+                <h3>Connections</h3>
+                <p>
+                    Connections link nodes together, passing data from one node to the next. The output of one node becomes 
+                    the input for the next node in the workflow.
+                </p>
+
+                <h2>Installation & Setup</h2>
+
+                <h3>Cloud Option (Easiest)</h3>
+                <p>For beginners, the cloud version is the easiest way to get started:</p>
+                <ol>
+                    <li>Visit <code>https://n8n.cloud</code></li>
+                    <li>Sign up for a free account</li>
+                    <li>Start building workflows immediately</li>
+                </ol>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> The cloud version offers a free tier with limited executions, perfect for learning and testing.
+                </div>
+
+                <h3>Self-Hosted Option (Docker)</h3>
+                <p>For more control, you can self-host n8n using Docker:</p>
+                <pre><code>docker run -it --rm \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  n8nio/n8n</code></pre>
+                <p>Then access it at <code>http://localhost:5678</code></p>
+
+                <h2>Your First Workflow: Send Email on Schedule</h2>
+                <p>Let's create a simple workflow that sends an email every day at 9 AM:</p>
+
+                <h3>Step 1: Create a New Workflow</h3>
+                <ol>
+                    <li>Click "New" to create a new workflow</li>
+                    <li>Give your workflow a descriptive name</li>
+                </ol>
+
+                <h3>Step 2: Add a Trigger Node</h3>
+                <ol>
+                    <li>Search for and add a "Schedule" trigger node</li>
+                    <li>Configure it to trigger daily at 9 AM</li>
+                    <li>Set your timezone</li>
+                </ol>
+
+                <h3>Step 3: Add an Email Node</h3>
+                <ol>
+                    <li>Add a "Send Email" node (Gmail, Outlook, or SMTP)</li>
+                    <li>Connect the Schedule node to the Email node</li>
+                    <li>Configure your email settings:
+                        <ul>
+                            <li>From: Your email address</li>
+                            <li>To: Recipient's email</li>
+                            <li>Subject: Your email subject</li>
+                            <li>Message: Your email body</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Step 4: Activate and Test</h3>
+                <ol>
+                    <li>Click "Test workflow" to test it immediately</li>
+                    <li>If successful, click "Activate" to enable it</li>
+                    <li>Your workflow will now run daily at 9 AM!</li>
+                </ol>
+
+                <h2>Advanced Example: Create Slack Messages from Form Submissions</h2>
+                <p>Let's build a more complex workflow:</p>
+
+                <h3>Workflow Description</h3>
+                <p>
+                    When someone submits a form, automatically create a formatted Slack message in your team channel.
+                </p>
+
+                <h3>Steps</h3>
+                <ol>
+                    <li><strong>Add Webhook Node:</strong> Create a webhook trigger to receive form data</li>
+                    <li><strong>Add Format Node:</strong> Transform the form data into a formatted message</li>
+                    <li><strong>Add Slack Node:</strong> Send the formatted message to a Slack channel</li>
+                    <li><strong>Configure Slack:</strong>
+                        <ul>
+                            <li>Select your Slack workspace</li>
+                            <li>Choose the target channel</li>
+                            <li>Format your message with form data</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test:</strong> Submit a test form and verify the Slack message appears</li>
+                </ol>
+
+                <div class="note">
+                    <strong>⚠️ Important:</strong> Make sure to copy the webhook URL and test it with your form provider to ensure data is being sent correctly.
+                </div>
+
+                <h2>Popular Use Cases</h2>
+                <p>Here are some common workflows people build with n8n:</p>
+                <ul>
+                    <li><strong>CRM Integration:</strong> Create Salesforce leads from form submissions</li>
+                    <li><strong>Social Media:</strong> Automatically post to Twitter, LinkedIn, or Facebook</li>
+                    <li><strong>Email Management:</strong> Process incoming emails and create tasks</li>
+                    <li><strong>Data Synchronization:</strong> Keep data in sync between multiple apps</li>
+                    <li><strong>Notification System:</strong> Send alerts via Slack, Email, or SMS</li>
+                    <li><strong>Content Publishing:</strong> Publish blog posts to multiple platforms</li>
+                    <li><strong>Invoice Management:</strong> Generate and send invoices automatically</li>
+                    <li><strong>Team Collaboration:</strong> Automate team workflows and processes</li>
+                </ul>
+
+                <h2>Best Practices</h2>
+                <p>Here are some tips for building effective n8n workflows:</p>
+
+                <h3>1. Start Simple</h3>
+                <p>Begin with basic workflows and gradually add complexity as you get comfortable with the platform.</p>
+
+                <h3>2. Test Thoroughly</h3>
+                <p>Always test your workflow with real data before activating it for production use.</p>
+
+                <h3>3. Add Error Handling</h3>
+                <p>Use error nodes to handle failures gracefully and send notifications when issues occur.</p>
+
+                <h3>4. Use Variables</h3>
+                <p>Create variables for values you reuse across nodes (API keys, email addresses, etc.).</p>
+
+                <h3>5. Document Your Workflows</h3>
+                <p>Add descriptions and comments to make your workflows easy to understand and maintain.</p>
+
+                <h3>6. Monitor Execution</h3>
+                <p>Regularly check the execution logs to ensure your workflows are running successfully.</p>
+
+                <h2>Troubleshooting Common Issues</h2>
+
+                <h3>Workflow Not Triggering</h3>
+                <p>Check that:</p>
+                <ul>
+                    <li>The workflow is activated (blue toggle switch)</li>
+                    <li>The trigger node is properly configured</li>
+                    <li>The webhook URL is correctly set up (if using Webhook trigger)</li>
+                </ul>
+
+                <h3>Connection Errors</h3>
+                <p>Make sure:</p>
+                <ul>
+                    <li>You've authenticated with the service (Slack, Gmail, etc.)</li>
+                    <li>Your API credentials are still valid</li>
+                    <li>You have the necessary permissions in the connected service</li>
+                </ul>
+
+                <h3>Data Not Flowing Correctly</h3>
+                <p>Use the test function to:</p>
+                <ul>
+                    <li>Debug node outputs</li>
+                    <li>Verify data is being passed correctly between nodes</li>
+                    <li>Check data transformations</li>
+                </ul>
+
+                <h2>Resources & Next Steps</h2>
+                <p>To continue learning about n8n:</p>
+                <ul>
+                    <li><strong>Official Documentation:</strong> Visit <code>https://docs.n8n.io</code></li>
+                    <li><strong>Community Forum:</strong> Get help from the n8n community</li>
+                    <li><strong>YouTube Tutorials:</strong> Watch step-by-step video guides</li>
+                    <li><strong>Templates:</strong> Start with pre-built templates for common workflows</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>
+                    n8n is a game-changer for automation and integration. Whether you're a non-technical user looking to automate 
+                    repetitive tasks or a developer building complex integrations, n8n provides the tools you need. 
+                </p>
+                <p>
+                    Start with simple workflows, gradually build your skills, and before long you'll be automating processes 
+                    that save you hours of manual work each week. The possibilities are truly endless!
+                </p>
+                <p>
+                    Have you used n8n? Share your favorite workflows and use cases in the comments below!
+                </p>
+
+                <a href="/blog.html" class="back-link">← Back to Blog</a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Thrinod. All rights reserved.</p>
+    </footer>
+</body>
+</html>
