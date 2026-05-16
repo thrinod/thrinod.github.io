@@ -213,6 +213,104 @@
             font-size: 1.2em;
         }
         
+        /* Featured Project Section */
+        .featured-project {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .project-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .project-content h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .project-description {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+        
+        .project-features {
+            list-style: none;
+            margin: 30px 0;
+            font-size: 1em;
+        }
+        
+        .project-features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .project-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .project-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            font-size: 4em;
+        }
+        
         /* Skills Section */
         .skills {
             padding: 80px 20px;
@@ -440,6 +538,15 @@
             .btn {
                 width: 100%;
             }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .project-image {
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -496,6 +603,53 @@
                 <div class="highlight-item">
                     <strong>Community</strong>
                     <p>Active Open Source Contributor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project: Human PDF Reader -->
+    <section class="featured-project">
+        <div class="project-container">
+            <h2 class="section-title" style="color: white; margin-bottom: 0;">Featured Project</h2>
+            <div class="project-grid">
+                <div class="project-content">
+                    <h3>Human PDF Reader 📖🎙️</h3>
+                    <p class="project-description">
+                        A 100% offline, privacy-first PDF reader that brings your documents to life with high-fidelity, human-like Text-to-Speech (TTS). 
+                        Designed for deep focus and a premium reading experience.
+                    </p>
+                    
+                    <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 1.1em;">Key Features:</h4>
+                    <ul class="project-features">
+                        <li>Split-Screen Dashboard with visual PDF viewer and parsed text</li>
+                        <li>Human-Like Voice powered by Kokoro-82M TTS engine</li>
+                        <li>"Read From Here" - Highlight to jump audio position</li>
+                        <li>Bi-Directional Page Sync between visual and audio</li>
+                        <li>Multi-threaded PDF Parsing for rapid extraction</li>
+                        <li>Deep Pre-fetching for zero-latency playback</li>
+                        <li>Intelligent Caching for instant replay</li>
+                        <li>Privacy First - Everything runs locally</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 1.1em;">Technology Stack:</h4>
+                    <div class="project-tech">
+                        <span class="tech-badge">Next.js 15</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">ONNX/Torch</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/thrinod/humanpdfreader" target="_blank">View on GitHub</a>
+                        <a href="https://github.com/thrinod/humanpdfreader" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-image">
+                    📚
                 </div>
             </div>
         </div>
